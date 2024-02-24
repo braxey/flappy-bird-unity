@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class BirdCollisionCheck : MonoBehaviour
 {
-    void OnCollisionEnter2D(Collision2D other)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        // Check if the collider belongs to a pipe
-        if (other.gameObject.tag == "Pipe") {
+        // check if the collider belongs to a pipe
+        if (collision.gameObject.tag == "Pipe") {
             // disable pipe spawning
             HaltPipeSpawning();
 
@@ -15,7 +15,7 @@ public class BirdCollisionCheck : MonoBehaviour
             FreezePipes();
 
             // freeze bird
-            
+            FreezeBird();
         }
     }
 
@@ -32,7 +32,17 @@ public class BirdCollisionCheck : MonoBehaviour
         GameObject[] pipes = GameObject.FindGameObjectsWithTag("Pipe");
 
         foreach (GameObject pipe in pipes) {
-            Destroy(pipe.GetComponent<Rigidbody2D>());
+            if (pipe != null) {
+                Destroy(pipe.GetComponent<Rigidbody2D>());
+            }
+        }
+    }
+
+    void FreezeBird()
+    {
+        GameObject bird = GameObject.FindWithTag("Bird");
+        if (bird != null) {
+            Destroy(bird.GetComponent<Rigidbody2D>());
         }
     }
 }
