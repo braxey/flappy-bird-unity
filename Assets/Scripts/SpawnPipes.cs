@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnPipes : MonoBehaviour
 {
     public GameObject pipePrefab;
-    public float spawnRate = 5f;
+    public float spawnRate = 2f;
     private float nextSpawnTime = 0f;
 
     void Update()

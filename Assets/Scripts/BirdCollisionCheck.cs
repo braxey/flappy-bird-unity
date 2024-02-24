@@ -8,10 +8,31 @@ public class BirdCollisionCheck : MonoBehaviour
     {
         // Check if the collider belongs to a pipe
         if (other.gameObject.tag == "Pipe") {
-            // Perform actions when the bird collides with a pipe
-            Debug.LogError("Bird collided with a pipe!");
+            // disable pipe spawning
+            HaltPipeSpawning();
 
-            // Add your code to handle the collision, such as game over logic or score update
+            // freeze all pipes
+            FreezePipes();
+
+            // freeze bird
+            
+        }
+    }
+
+    void HaltPipeSpawning()
+    {
+        GameObject pipeSpawner = GameObject.FindWithTag("PipeSpawner");
+        if (pipeSpawner != null) {
+            Destroy(pipeSpawner.GetComponent<SpawnPipes>());
+        }
+    }
+
+    void FreezePipes()
+    {
+        GameObject[] pipes = GameObject.FindGameObjectsWithTag("Pipe");
+
+        foreach (GameObject pipe in pipes) {
+            Destroy(pipe.GetComponent<Rigidbody2D>());
         }
     }
 }
