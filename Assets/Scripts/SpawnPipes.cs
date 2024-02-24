@@ -6,7 +6,6 @@ public class SpawnPipes : MonoBehaviour
 {
     public GameObject pipePrefab;
     public float spawnRate = 5f;
-
     private float nextSpawnTime = 0f;
 
     void Update()
