@@ -8,13 +8,17 @@ public class BirdJump : MonoBehaviour
 
     void Update()
     {
+        // check for space bar and that the bird is below the allowed height
         if (Input.GetKeyDown(KeyCode.Space) && transform.position.y < 6) {
-            Jump();
+
+            // make sure the bird is not dead
+            if (transform.GetComponent<Collider2D>().enabled) {
+                Jump();
+            }
         }
 
         if (transform.position.y < -3.5) {
             transform.position = new Vector2(0, -3.5f);
-            // transform.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
 

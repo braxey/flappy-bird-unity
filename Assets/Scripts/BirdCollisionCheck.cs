@@ -42,7 +42,11 @@ public class BirdCollisionCheck : MonoBehaviour
     {
         GameObject bird = GameObject.FindWithTag("Bird");
         if (bird != null) {
-            Destroy(bird.GetComponent<Rigidbody2D>());
+            Collider2D collider = bird.transform.GetComponent<Collider2D>();
+            collider.enabled = !collider.enabled;
+
+            Rigidbody2D rb = bird.transform.GetComponent<Rigidbody2D>();
+            rb.velocity = new Vector2(0, rb.velocity.y);
         }
     }
 }
