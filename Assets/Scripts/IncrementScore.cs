@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class IncrementScore : MonoBehaviour
 {
-    void OnCollisionExit2d(Collision2D other)
+    void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.LogError("hello");
+        // get the object that contains the score
         GameObject scoreObject = GameObject.FindWithTag("Score");
         Score score = scoreObject.GetComponent<Score>();
 
-        // listen for pipes colliding with the collector
-        if (other.gameObject.tag == "Bird") {
+        // if we passed a score barrier, then increment the score
+        if (collision.gameObject.tag == "ScoreBarrier") {
             score.increment();
-            Debug.LogError(score.getScore());
         }
     }
 }
