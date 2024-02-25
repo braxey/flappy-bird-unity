@@ -12,7 +12,10 @@ public class IncrementScore : MonoBehaviour
 
         // if we passed a score barrier, then increment the score
         if (collision.gameObject.tag == "ScoreBarrier") {
-            score.increment();
+            // make sure the bird isn't already dead
+            if (transform.GetComponent<Collider2D>().enabled) {
+                score.increment();
+            }
         }
     }
 }
