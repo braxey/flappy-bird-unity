@@ -13,7 +13,7 @@ public class PipeInitialization : MonoBehaviour
 
     void Start()
     {
-        float yPositionOfPipes = Random.Range(-3f, 3f);
+        float yPositionOfPipes = Random.Range(-2.7f, 2.7f);
         transform.position = transform.position + new Vector3(0, yPositionOfPipes, 0);
 
         Transform bottomPipe = transform.GetChild(BOTTOM_PIPE_CHILD_INDEX);

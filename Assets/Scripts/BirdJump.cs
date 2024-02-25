@@ -12,8 +12,9 @@ public class BirdJump : MonoBehaviour
             Jump();
         }
 
-        if (transform.position.y < -6) {
-            transform.position = new Vector2(0, -6);
+        if (transform.position.y < -3.5) {
+            transform.position = new Vector2(0, -3.5f);
+            // transform.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
 
