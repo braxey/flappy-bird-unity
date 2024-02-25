@@ -8,8 +8,12 @@ public class BirdJump : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.Space) && transform.position.y < 6) {
             Jump();
+        }
+
+        if (transform.position.y < -6) {
+            transform.position = new Vector2(0, -6);
         }
     }
 
