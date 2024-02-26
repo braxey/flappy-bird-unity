@@ -10,15 +10,20 @@ public class BirdJump : MonoBehaviour
     {
         // check for space bar and that the bird is below the allowed height
         if (Input.GetKeyDown(KeyCode.Space) && transform.position.y < 6) {
-
             // make sure the bird is not dead
-            if (transform.GetComponent<Collider2D>().enabled) {
+            if (GameManager.Instance.state != GameManager.GameState.GameOver) {
                 Jump();
             }
         }
 
         if (transform.position.y < -3.5) {
             transform.position = new Vector2(0, -3.5f);
+        }
+
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb.velocity.y < -30f) {
+            rb.velocity = new Vector2(0f, -30f);
+            rb.angularVelocity = 0f;
         }
     }
 

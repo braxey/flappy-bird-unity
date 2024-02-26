@@ -16,6 +16,9 @@ public class BirdCollisionCheck : MonoBehaviour
 
             // freeze bird
             FreezeBird();
+
+            // change the game state to over
+            GameManager.Instance.UpdateGameState(GameManager.GameState.GameOver);
         }
     }
 
@@ -23,7 +26,7 @@ public class BirdCollisionCheck : MonoBehaviour
     {
         GameObject pipeSpawner = GameObject.FindWithTag("PipeSpawner");
         if (pipeSpawner != null) {
-            Destroy(pipeSpawner.GetComponent<SpawnPipes>());
+            pipeSpawner.SetActive(false);
         }
     }
 
@@ -47,6 +50,7 @@ public class BirdCollisionCheck : MonoBehaviour
 
             Rigidbody2D rb = bird.transform.GetComponent<Rigidbody2D>();
             rb.velocity = new Vector2(0, rb.velocity.y);
+            rb.angularVelocity = 0f;
         }
     }
 }

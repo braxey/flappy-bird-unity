@@ -10,19 +10,28 @@ public class Score : MonoBehaviour
 
     void Start()
     {
-        totalScore = 0;
-        UpdateScoreText();
+        resetScore();
     }
 
     void UpdateScoreText()
     {
-        // update the UI text with pixel art numbers
         scoreText.text = totalScore.ToString();
     }
 
     public void increment()
     {
         totalScore += 1;
+        UpdateScoreText();
+    }
+
+    public int GetScore()
+    {
+        return totalScore;
+    }
+
+    public void resetScore()
+    {
+        totalScore = 0;
         UpdateScoreText();
     }
 }
