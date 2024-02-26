@@ -9,7 +9,7 @@ public class BirdJump : MonoBehaviour
     void Update()
     {
         // check for space bar and that the bird is below the allowed height
-        if (Input.GetKeyDown(KeyCode.Space) && transform.position.y < 6) {
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && transform.position.y < 6) {
             // make sure the bird is not dead
             if (GameManager.Instance.state != GameManager.GameState.GameOver) {
                 Jump();
