@@ -30,5 +30,9 @@ public class BirdJump : MonoBehaviour
         if (rb != null) {
             rb.velocity = new Vector2(0f, jumpForce);
         }
+
+        if (GameManager.Instance.state == GameManager.GameState.StartGame) {
+            GameManager.Instance.UpdateGameState(GameManager.GameState.GameStarted);
+        }
     }
 }
